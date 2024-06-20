@@ -75,6 +75,8 @@ def delete():
 def read():
 
     # This function reads all the products present in the stock.
+    file = dict(sorted(openSave.open_file().items(),key=lambda x:str(x[0])))
+    openSave.save_file(file) 
     print(f"{'Name' : <18}|{'Price' : ^18}|{'Quantity' : >18}") 
     for key, value in file.items():
         print(f'{key: <18}|{value[0]: ^18}|{value[1]: >18}')
