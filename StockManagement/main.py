@@ -4,23 +4,26 @@ def main():
 
     # This function creates a menu.
     while True:
-        listOperation = ['Press 1 to add new product.', 'Press 2 to update a product.',
-                         'Press 3 to show all products.', 'Press 4 to exit.']
+        menuOptions = [
+            '1. Add new product',
+            '2. Update a product',
+            '3. Show all products',
+            '4. Exit the program'
+        ]
         lineBase = 47 * '*'
-        print('Menu - Stock'.center(47))
-        
-        print(lineBase)
-        for item in listOperation:
-            space = len(lineBase) - len(item) - 12
-            print(f'*         {item}{space * " "} *')
-        print(lineBase)
 
+        print(lineBase)
+        print('Menu - Stock'.center(47))
+        print(lineBase)
+        for item in menuOptions:
+            space = len(lineBase) - len(item)
+            print(f'{"*" : <15}{item: ^5}{"*" : >{space - 15}} ')
+        print(lineBase)
         option = input('Your option: ')
+        
         if option == '1':
-            print(lineBase)
             appStock.add()
         elif option == '2':
-            print(lineBase)
             appStock.update()
         elif option == '3':
             print(lineBase)
@@ -31,6 +34,7 @@ def main():
             break
         else:
             print('Wrong option.')
-        print()
+        
+        input('Press Enter to continue...')
 
 main()
