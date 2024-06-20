@@ -28,13 +28,11 @@ def main():
         elif option == '3':
             print(lineBase)
             appStock.read()
-            print(lineBase)
+            input('\nPress Enter to continue...')
         elif option == '4':
             print('Exit\n')
             break
         else:
-            print('Wrong option.')
-        
-        input('Press Enter to continue...')
+            print('Wrong option.')      
 
 main()

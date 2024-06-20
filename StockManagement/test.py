@@ -66,7 +66,3 @@ products = cursor.execute('Select * From Products')
 for item in products:
     print(f'{list(item)[0]} cost {list(item)[1]}, and it has {list(item)[2]} in stock\n')
 '''
-
-list = ['Apple', 'Bike', 'Science']
-test = 'A'
-print(test in list)
