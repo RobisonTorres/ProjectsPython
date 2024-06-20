@@ -9,7 +9,7 @@ def checkInput(function, product):
         newProductQuantity = int(input(f"Enter the {product} quantity in stock: ").replace(' ', ''))
     
         if newProductPrice > 0 and newProductQuantity >= 0: 
-            file[product.capitalize()] = [newProductPrice, newProductQuantity]
+            file[product.capitalize()] = [round(newProductPrice, 2), newProductQuantity]
             openSave.save_file(file)
             print(f'The stock is updated - {product}.')
         else:
