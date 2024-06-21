@@ -62,10 +62,12 @@ def delete():
         print("Stock empty! There\'s nothing to delete.\n")
         return read()
     
-    deleteProduct = input('Enter the product you would like to delete: ').capitalize()
+    deleteProduct = input('\nEnter the product you would like to delete: ').capitalize()
 
     if deleteProduct not in list(file.keys()):
-        print(f'{deleteProduct} is not present in the stock.')
+        print(f'{deleteProduct} is not present in the stock.\n')
+        read()
+        print('You have this products in stock.')
         delete()
     else:
         del file[deleteProduct]
@@ -77,6 +79,7 @@ def read():
     # This function reads all the products present in the stock.
     file = dict(sorted(openSave.open_file().items(),key=lambda x:str(x[0])))
     openSave.save_file(file) 
-    print(f"{'Name' : <18}|{'Price' : ^18}|{'Quantity' : >18}") 
+    print(f"{'Name' : <18}|{'Price' : ^18}|{'Quantity' : >18}")
+    print(56 * '_') 
     for key, value in file.items():
         print(f'{key: <18}|{value[0]: ^18.2f}|{value[1]: >18}')
