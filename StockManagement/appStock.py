@@ -79,4 +79,4 @@ def read():
     openSave.save_file(file) 
     print(f"{'Name' : <18}|{'Price' : ^18}|{'Quantity' : >18}") 
     for key, value in file.items():
-        print(f'{key: <18}|{value[0]: ^18}|{value[1]: >18}')
+        print(f'{key: <18}|{value[0]: ^18.2f}|{value[1]: >18}')

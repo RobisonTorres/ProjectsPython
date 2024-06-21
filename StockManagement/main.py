@@ -2,7 +2,7 @@ import appStock
 
 def main():
 
-    # This function creates a menu.
+    # This function creates the app's menu and executes its functionalities.
     while True:
         menuOptions = [
             '1. Add new product',
