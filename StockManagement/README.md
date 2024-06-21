@@ -2,17 +2,17 @@
 
 ## Intro
 
-This project aims to provide a Stock Management System using Python, allowing users to perform CRUD operations on stock items.
+This project provides a Stock Management System, allowing users to perform CRUD operations on stock items.
 
 ## Features 
 
  - ```appStock.py``` - This script gathers all the app's functions.
  Functions present in this file are:
-  * checkInput - This function checks if the user's input is valid.
-  * add - This function adds new products to the stock.
-  * update - This function updates the products present in the stock.
-  * delete - This function deletes products present in the stock.
-  * read - This function reads all the products present in the stock.
+  1. checkInput - Checks if the user's input is valid.
+  2. add - Adds new products to the stock.
+  3. update - Updates the products present in the stock.
+  4. delete - Deletes products present in the stock.
+  5. read - Reads all the products present in the stock.
 
  - ```main.py``` - This function creates the app's menu and executes its functionalities.
  - ```OpenSave.py``` - This function opens and loads stockProducts.json file.
@@ -29,15 +29,15 @@ To use this repository, follow these steps:
 
 1. Clone the repository to your local machine.
 
-   ```bash
-  git clone https://github.com/RobisonTorres/ProjectsPython.git  
+    ```bash
+    git clone https://github.com/RobisonTorres/ProjectsPython.git 
 
 2. Install required Python packages.
 
 3. Navigate to the directory.
 
-   ```bash
-  cd ProjectsPython/StockManagement.
+    ```bash
+    cd ProjectsPython/StockManagement.
 
 4. Execute the main.py.
 
