@@ -1,6 +1,6 @@
-## Projects with Python.
+## Stock Management.
 
 ### Projects related:
 
-  * Stock Management 
+  * Stock Management - json
   * Stock Management - Sql
