@@ -43,7 +43,7 @@ To use this repository, follow these steps:
 
 ## Example
 
-After running the main.py you be able to access the app's menu:
+After running the main.py you will be able to access the app's menu:
 
 ```
 ********************************************************
