@@ -2,13 +2,6 @@ from connectionSql import *
 connection = connection()
 cursor = connection.cursor() # Sql's cursor.
 
-def inputUser():
-
-    # This function asks user to input the product's price and quantity.
-    newProductPrice = float(input(f"Enter the Product's price: "))
-    newProductQuantity = int(input(f"Enter the Product's quantity in stock: "))
-    return [newProductPrice, newProductQuantity]
-
 def add(newProduct=False):
 
     # This function adds new products to the stock.
@@ -23,14 +16,15 @@ def add(newProduct=False):
         else:
             return add()
             
-    price, quantity = inputUser()    
     try:
-        cursor.execute(f"""INSERT INTO Products VALUES ('{newProduct}', {price}, {quantity});""")  
+        newProductPrice = input(f"Enter the Product's price: ")
+        newProductQuantity = input(f"Enter the Product's quantity in stock: ")
+        cursor.execute(f"""INSERT INTO Products VALUES ('{newProduct}', {float(newProductPrice)}, {int(newProductQuantity)});""")  
         connection.commit()
         print(f'The stock has been updated - {newProduct}.')
-    except odbc.Error:
-        print(f'Please, enter a valid name, price and quantity for the new product.')
-        add()
+    except (ValueError, odbc.Error):
+        print(f'Error! Price must be greater than $ 0.0 and quantity greater or equals to 0.')
+        add(newProduct)
 
 def update(updateProduct=False):
 
@@ -46,13 +40,14 @@ def update(updateProduct=False):
         else:
             return update()
         
-    price, quantity = inputUser()   
     try:
-        cursor.execute(f"""Update Products Set Price = {price}, Amount = {quantity} Where Name = '{updateProduct}';""")  
+        updateProductPrice = input(f"Enter the Product's price: ")
+        updateProductQuantity = input(f"Enter the Product's quantity in stock: ")
+        cursor.execute(f"""Update Products Set Price = {float(updateProductPrice)}, Quantity = {int(updateProductQuantity)} Where Name = '{updateProduct}';""")  
         connection.commit()
         print(f'The stock has been updated - {updateProduct}.')
-    except odbc.Error:
-        print(f'Please, enter a valid price and quantity for {updateProduct}.')
+    except (ValueError, odbc.Error):
+        print(f'Error! Price must be greater than $ 0 and quantity greater or equals to 0.')
         update(updateProduct)
 
 def delete():
@@ -74,7 +69,7 @@ def delete():
         print(f'{deleteProduct} has been deleted from the stock.')
     
 def read():
-
+    
     # This function reads all the products present in the stock.
     productsList = cursor.execute('Select * From Products Order By Name Asc;').fetchall()
     print(f"{'Name' : <18}|{'Price' : ^18}|{'Quantity' : >18}")
@@ -87,3 +82,34 @@ def allProduct():
     # This function retrieves all the products present in the Products Table.
     products = cursor.execute('Select * From Products').fetchall()
     return [p[0] for p in products]
+
+def main():
+
+    # This function creates the app's menu and executes its functionalities.
+    while True:
+        menuOptions = ['1. Add new product', '2. Update a product', '3. Show all products', '4. Delete a product', '5. Exit the program']
+        lineBase = 56 * '*'
+        print(lineBase + '\n' + 'Menu - Stock'.center(56) + '\n' + lineBase)
+        for item in menuOptions:
+            space = len(lineBase) - len(item)
+            print(f'{"*" : <18}{item: ^8}{"*" : >{space - 18}} ')
+
+        option = input(lineBase + '\nYour option: ')
+        match option:
+            case '1':
+                add()
+            case '2':
+                update()
+            case '3':
+                read()
+                print(input('\nPress enter to continue...'))
+            case '4':
+                delete()
+            case '5':
+                print('Exiting...\n')
+                connection.close()
+                break
+            case _:
+                print('Wrong option.')      
+                
+main()
