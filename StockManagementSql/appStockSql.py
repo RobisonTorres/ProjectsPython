@@ -1,12 +1,12 @@
-from connectionSql import connection
+from connectionSql import *
 connection = connection()
 cursor = connection.cursor() # Sql's cursor.
 
 def inputUser():
 
     # This function asks user to input the product's price and quantity.
-    newProductPrice = input(f"Enter the Product's price: ")
-    newProductQuantity = input(f"Enter the Product's quantity in stock: ")
+    newProductPrice = float(input(f"Enter the Product's price: "))
+    newProductQuantity = int(input(f"Enter the Product's quantity in stock: "))
     return [newProductPrice, newProductQuantity]
 
 def add(newProduct=False):
@@ -15,7 +15,7 @@ def add(newProduct=False):
     if newProduct == False:
         newProduct = input(f"Please, enter the new product's name: ").replace(' ', '').capitalize()
         
-    if newProduct in products:
+    if newProduct in allProduct():
         print(f'{newProduct} is already in the stock.')
         mayUpdated = input(f"Pres 'y' if you would like to update {newProduct}: ").lower()
         if mayUpdated == 'y':
@@ -23,14 +23,14 @@ def add(newProduct=False):
         else:
             return add()
             
-    priceQuantity = inputUser()    
+    price, quantity = inputUser()    
     try:
-        cursor.execute(f"""INSERT INTO Products VALUES ('{newProduct}', {float(priceQuantity[0])}, {int(priceQuantity[1])});""")  
+        cursor.execute(f"""INSERT INTO Products VALUES ('{newProduct}', {price}, {quantity});""")  
         connection.commit()
         print(f'The stock has been updated - {newProduct}.')
-    except ValueError:
-        print(f'Please, enter a valid price and quantity for {newProduct}.')
-        add(newProduct)
+    except odbc.Error:
+        print(f'Please, enter a valid name, price and quantity for the new product.')
+        add()
 
 def update(updateProduct=False):
 
@@ -38,7 +38,7 @@ def update(updateProduct=False):
     if updateProduct == False:
         updateProduct = input(f'Enter the product you would like to update: ').replace(' ', '').capitalize()
 
-    if updateProduct not in products:
+    if updateProduct not in allProduct():
         print(f'{updateProduct} is not present in the stock.')
         mayAdd = input(f"Pres 'y' if you would like to add {updateProduct}: ").lower()
         if mayAdd == 'y':
@@ -46,24 +46,24 @@ def update(updateProduct=False):
         else:
             return update()
         
-    priceQuantity = inputUser()
+    price, quantity = inputUser()   
     try:
-        cursor.execute(f"""Update Products Set Price = {priceQuantity[0]}, Amount = {priceQuantity[1]} Where Name = '{updateProduct}';""")  
+        cursor.execute(f"""Update Products Set Price = {price}, Amount = {quantity} Where Name = '{updateProduct}';""")  
         connection.commit()
         print(f'The stock has been updated - {updateProduct}.')
-    except ValueError:
+    except odbc.Error:
         print(f'Please, enter a valid price and quantity for {updateProduct}.')
         update(updateProduct)
 
 def delete():
 
     # This function deletes product present in the stock.
-    if len(products) == 0:
+    if len(allProduct()) == 0:
         print("Stock empty! There\'s nothing to delete.\n")
         return read()
     
     deleteProduct = input('\nEnter the product you would like to delete: ').capitalize()
-    if deleteProduct not in products:
+    if deleteProduct not in allProduct():
         print(f'{deleteProduct} is not present in the stock.\n')
         read()
         print('You have this products in stock.')
@@ -82,5 +82,8 @@ def read():
     for product in productsList:
         print(f'{product[0]: <18}|{product[1]: ^18.2f}|{product[2]: >18}')
 
-products = cursor.execute('Select * From Products').fetchall()
-products = [p[0] for p in products] # Products present in the Products Table.
+def allProduct():
+
+    # This function retrieves all the products present in the Products Table.
+    products = cursor.execute('Select * From Products').fetchall()
+    return [p[0] for p in products]
