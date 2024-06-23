@@ -19,6 +19,7 @@ def main():
                 appStock.update()
             case '3':
                 appStock.read()
+                print(input('Press enter to continue...'))
             case '4':
                 appStock.delete()
             case '5':
@@ -26,5 +27,4 @@ def main():
                 break
             case _:
                 print('Wrong option.')      
-
 main()
