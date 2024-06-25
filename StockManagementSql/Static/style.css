@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: medium;
+    background-image: url("https://www.newcastlesys.com/hs-fs/hubfs/2022/0406/220406-how-to-keep-your-warehouse-organized.jpeg?width=1500&name=220406-how-to-keep-your-warehouse-organized.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    max-width: 350px;
+    text-align: center;
+    margin: auto;
+}
+
+#Title {
+    text-align: left;
+}
+
+.menu {
+    color: black;
+    background-color: #b9b939;
+    padding-left: 20px;
+    border: solid;
+    width: 400px;
+    margin: 7px auto;
+}
+
+input[type="text"] {
+    width: 49%;
+}
+
+input[type="number"] {
+    width: 25%;
+}
+
+input[type="submit"]{
+    width: 75px;
+}
+
+#pInline {
+    text-align: left;
+    display: inline;
+}
