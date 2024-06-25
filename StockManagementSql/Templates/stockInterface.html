@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <title>Stock Interface</title>
+</head>
+<body>
+    <h1>Stock Management System</h1>
+    <div class="menu">
+        <form action="/add" method="post">
+            <p id="Title">Add a new product.</p>
+            <label for="product name">Name:</label>
+            <input type="text" id="product name" name="product_name">
+            <input type="submit" value="Add"><br><br>
+            <label for="product price">Price:</label>
+            <input type="number" min="0.00" step="0.01" id="product price" name="product_price">
+            <label for="product quantity">Quantity:</label>
+            <input type="number" min="0" step="1" id="product quantity" name="product_quantity">
+            <p>{{result_add}}</p>
+        </form>
+    <br>
+    </div>
+    <div class="menu">
+        <form action="/update" method="post">
+            <p id="Title">Update a product.</p>
+            <label for="product name update">Name:</label>
+            <input type="text" id="product name update" name="product_name_update">
+            <input type="submit" value="Update"><br><br>
+            <label for="product price update">Price:</label>
+            <input type="number" min="0.00" step="0.01" id="product price update" name="product_price_update">
+            <label for="product quantity">Quantity:</label>
+            <input type="number" min="0" step="1" id="product quantity" name="product_quantity_update">
+        </form>
+        <p>{{result_update}}</p>
+    <br>
+    </div>
+    <div class="menu">
+        <form action="/delete" method="post">
+            <p id="Title">Delete a product.</p>
+            <label for="product name delete">Name:</label>
+            <input type="text" id="product name delete" name="delete">
+            <input type="submit" value="Delete"><br><br>
+        </form>
+        <p>{{result_delete}}</p>
+    </div>
+    <div class="menu">
+        <form action="/show">
+        <br>
+        <p id="pInline">Show all products present in the stock.</p>
+        {% for item in showItem %}
+        <p>{{item[0]}} {{item[1]}} {{item[2]}}</p>
+        {% endfor %}
+        <input type="submit" value="Show"><br><br>
+        </form>
+    </div>
+</body>
+</html>
