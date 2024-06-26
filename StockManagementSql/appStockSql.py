@@ -13,7 +13,7 @@ def add(newProduct, newProductPrice, newProductQuantity):
         connection.commit()
         return f'The stock has been updated - {newProduct}.'
     except (ValueError, odbc.Error):
-        return f'Error! Price must be greater than $ 0.0 and quantity greater or equals to 0.' 
+        return 'Error! Please, provide a valid price and quantity.' 
 
 def update(updateProduct, updateProductPrice, updateProductQuantity):
 
@@ -26,7 +26,7 @@ def update(updateProduct, updateProductPrice, updateProductQuantity):
         connection.commit()
         return f'The stock has been updated - {updateProduct}.'
     except (ValueError, odbc.Error):
-        return f'Error! Price must be greater than $ 0 and quantity greater or equals to 0.'
+        return 'Error! Please, provide a valid price and quantity.' 
 
 def delete(deleteProduct):
 
