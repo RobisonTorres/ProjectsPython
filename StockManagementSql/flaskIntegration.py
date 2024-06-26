@@ -10,7 +10,7 @@ def home():
 def add():
     
     # This function adds items to the stock.
-    productName = request.form['product_name']
+    productName = request.form['product_name'].replace(' ', '').capitalize()
     productPrice = request.form['product_price']
     productQuantity = request.form['product_quantity']
     result = appStockSql.add(productName, productPrice, productQuantity)
@@ -20,7 +20,7 @@ def add():
 def update():
 
     # This function updates items in the stock.
-    productName = request.form['product_name_update']
+    productName = request.form['product_name_update'].replace(' ', '').capitalize()
     productPrice = request.form['product_price_update']
     productQuantity = request.form['product_quantity_update']
     result = appStockSql.update(productName, productPrice, productQuantity)
@@ -30,7 +30,7 @@ def update():
 def delete():
 
     # This function deletes items from the stock.
-    itemToDelete = request.form['delete']
+    itemToDelete = request.form['delete'].replace(' ', '').capitalize()
     result = appStockSql.delete(itemToDelete)
     return render_template('stockInterface.html', result_delete = result)
 
