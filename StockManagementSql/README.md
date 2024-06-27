@@ -15,11 +15,13 @@ This project provides a Stock Management System, enabling users to perform CRUD 
 
 - **connectionSql.py**: Establishes the connection between Python and SQL Server.
 
+- **flaskIntegration.py**: Makes the integration between Backend and Frontend.
+
 ## Prerequisites
 
 - Python
 - SQL Server
-- Required Python packages: pypyodbc
+- Required Python packages: pypyodbc, flask, render_template, request
 
 ## Usage Instructions
 
@@ -52,29 +54,12 @@ To use this repository, follow these steps:
     ```bash
     cd ProjectsPython/StockManagementSql.
 
-5. Execute the appStockSql.py.
+5. Execute the flaskIntegration.py.
 
 ## Example
 
-After running the appStockSql.py you will be able to access the app's menu:
+After running the flaskIntegration.py, and clicking on the url link you will be able to access the app's menu on your browser:
 
-```
-********************************************************
-                      Menu - Stock
-********************************************************
-*                 1. Add new product                   * 
-*                 2. Update a product                  * 
-*                 3. Show all products                 * 
-*                 4. Delete a product                  * 
-*                 5. Exit the program                  * 
-********************************************************
-Your option: 3
-Name              |      Price       |          Quantity
-________________________________________________________
-Headphones        |      69.50       |                10
-Mouse             |      19.50       |                20
-Pc                |      299.99      |                 5
-Tv                |      499.99      |                 3
+<br>
 
-Press enter to continue...
-```
+![Interface](https://github.com/RobisonTorres/ProjectsPython/assets/69907756/5f117bcd-ce09-4603-b46b-5f534fc980fe)
