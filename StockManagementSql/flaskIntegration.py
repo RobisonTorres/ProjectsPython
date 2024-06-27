@@ -34,7 +34,7 @@ def delete():
     result = appStockSql.delete(itemToDelete)
     return render_template('stockInterface.html', result_delete = result)
 
-@app.route('/show')
+@app.route('/show', methods=["GET"])
 def show():
 
     # This function show all the items present in the stock.
@@ -42,4 +42,4 @@ def show():
     return render_template('stockInterface.html', showItem = result)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
