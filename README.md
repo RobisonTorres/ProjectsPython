@@ -1,4 +1,4 @@
-## Stock Management.
+## Stock Management System.
 
 ### Projects related:
 
