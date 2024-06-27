@@ -65,8 +65,10 @@
             </tr>
             {% endfor %}
         </table>
+        <div id="center_button">
         <input type="submit" value="Show">
         <input type="button" onclick="hideItem()" value="Hide"><br><br>
+        </div>  
         </form>
     </div>
     <script src="{{ url_for('static',filename='script.js') }}"></script>

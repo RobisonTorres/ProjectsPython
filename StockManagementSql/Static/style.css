@@ -7,10 +7,13 @@ body {
 }
 
 h1 {
-    max-width: 350px;
+    width: 375px;
     text-align: center;
     margin: auto;
     font-size: 25px;
+    background-color: #f9f9f9;
+    border: solid;
+    border-radius: 15px;
 }
 
 #Title {
@@ -40,6 +43,7 @@ input[type="number"] {
 
 input[type="submit"]{
     width: 75px;
+    height: 30px;
     background-color: green;
     border-color: green;
     border-radius: 5px;
@@ -47,6 +51,7 @@ input[type="submit"]{
 
 input[type="button"]{
     width: 75px;
+    height: 30px;
     background-color: green;
     border-color: green;
     border-radius: 5px;
@@ -59,14 +64,12 @@ input[type="button"]{
     margin: 10px auto;
     font-size: 18px;
     margin: 5px 0px 10px 0px;
+    table-layout: fixed;
 }
 
 #styled-table th {
     text-align: center;
     border: 1px solid black;
-}
-
-#styled-table th {
     background-color: white;
     color: black;
 }
@@ -76,10 +79,16 @@ input[type="button"]{
 }
 
 #hide td {
-    text-align: right;
+    text-align: center;
     border: 1px solid black;
 }
 
-#hide tbody tr:nth-child(odd) {
+#hide tbody tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+#center_button {
+
+    margin-right: 20px;
+    text-align: center;
 }
