@@ -2,5 +2,5 @@
 
 ### Projects related:
 
-  * Stock Management - json
-  * Stock Management - Sql
+1. Stock Management - Using Json as database.
+2. Stock Management - Using Flask & Sql (FrontEnd - BackEnd).
