@@ -1,6 +1,6 @@
-## Stock Management.
+## Stock Management System.
 
 ### Projects related:
 
-  * Stock Management - json
-  * Stock Management - Sql
+1. StockManagement - Using Json as database.
+2. StockManagementSql - Using Flask & Sql (FrontEnd - BackEnd).
