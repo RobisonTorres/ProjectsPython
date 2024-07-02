@@ -62,4 +62,4 @@ After running the flaskIntegration.py, and clicking on the url link you will be 
 
 <br>
 
-![Interface](https://github.com/RobisonTorres/ProjectsPython/assets/69907756/5f117bcd-ce09-4603-b46b-5f534fc980fe)
+<p align = "center"><img src = "https://github.com/RobisonTorres/ProjectsPython/assets/69907756/5f117bcd-ce09-4603-b46b-5f534fc980fe"></p>
